@@ -121,12 +121,8 @@ def excluir_conta(email):
 
             conexao.commit()
 
-            print("*"*80)
-            print(id)
-            print("*"*80)
-
             return True
         except:
-            return [False,'try']
+            return False
     else:
-        return [False]
+        return False
