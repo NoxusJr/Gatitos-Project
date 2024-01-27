@@ -75,4 +75,33 @@ def verificarEmail():
     return jsonify(verificar_email(nome,email,codigo))
 
 
-#app.run(host='localhost',port=5000, debug=True)
+# Salvar Ponto
+@cross_origin
+@app.route('/pontos/salvarPonto/', methods=['POST'])
+def salvarPonto():
+    dados = request.get_json()
+    email = dados['email']
+    id_jogo = dados['id_jogo']
+    pontos = dados['pontos']
+
+    return jsonify(salvar_ponto(email,id_jogo,pontos))
+
+
+# Retornar Ponto
+@cross_origin
+@app.route('/pontos/retornarPonto/', methods=['POST'])
+def retornarPonto():
+    dados = request.get_json()
+    email = dados['email']
+    id_jogo = dados['id_jogo']
+
+    return jsonify(retornar_ponto(email,id_jogo))
+
+# Retornar Ranking
+@cross_origin
+@app.route('/pontos/retornarRanking/', methods=['POST'])
+def retornarRanking():
+    dados = request.get_json()
+    id_jogo = dados['id_jogo']
+    
+    return jsonify(retornar_ranking(id_jogo))
