@@ -6,7 +6,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-# Criar Log
 @cross_origin
 @app.route('/log/criarLog', methods=['POST'])
 def rota_registrar_log():
@@ -21,7 +20,6 @@ def rota_registrar_log():
         return jsonify(False)
 
 
-# Criar Conta
 @cross_origin
 @app.route('/conta/criarConta', methods=['POST'])
 def criarConta():
@@ -33,7 +31,6 @@ def criarConta():
     return jsonify(criar_conta(nome,email,senha))
 
 
-# Logar Conta
 @cross_origin
 @app.route('/conta/logarConta', methods=['POST'])
 def logarConta():
@@ -44,7 +41,6 @@ def logarConta():
     return jsonify(logar_conta(email,senha))
 
 
-# Alterar Conta
 @cross_origin
 @app.route('/conta/alterarConta', methods=['PUT'])
 def alterarConta():
@@ -56,14 +52,12 @@ def alterarConta():
     return jsonify(alterar_conta(campo,novo_dado,email))
 
 
-# Excluir Conta
 @cross_origin
 @app.route('/conta/excluirConta/<string:email>', methods=['DELETE'])
 def excluirConta(email):
     return jsonify(excluir_conta(email))
 
 
-# Verificar Email
 @cross_origin
 @app.route('/conta/verificarEmail', methods=['POST'])
 def verificarEmail():
@@ -75,7 +69,6 @@ def verificarEmail():
     return jsonify(verificar_email(nome,email,codigo))
 
 
-# Salvar Ponto
 @cross_origin
 @app.route('/pontos/salvarPonto/', methods=['POST'])
 def salvarPonto():
@@ -87,7 +80,6 @@ def salvarPonto():
     return jsonify(salvar_ponto(email,id_jogo,pontos))
 
 
-# Retornar Ponto
 @cross_origin
 @app.route('/pontos/retornarPonto/', methods=['POST'])
 def retornarPonto():
@@ -97,7 +89,7 @@ def retornarPonto():
 
     return jsonify(retornar_ponto(email,id_jogo))
 
-# Retornar Ranking
+
 @cross_origin
 @app.route('/pontos/retornarRanking/', methods=['POST'])
 def retornarRanking():

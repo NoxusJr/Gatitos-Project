@@ -1,7 +1,7 @@
 from datetime import datetime 
 from .conexao import *
 
-# Verificar Disponibilidade Do Email:
+
 def verificar_uso_email(email):
     conexao.commit()
 
@@ -14,7 +14,7 @@ def verificar_uso_email(email):
     else:
        return True
     
-# Retorna A HORA ATUAL
+
 def retornar_hora():
     hora_atual = datetime.now()
     hora_atual = hora_atual.time()
@@ -23,7 +23,6 @@ def retornar_hora():
     return hora_atual[0:8]
 
 
-# Retorna A DATA ATUAL
 def retornar_data():
     data_atual = datetime.now()
     data_atual = data_atual.date()
@@ -32,7 +31,6 @@ def retornar_data():
     return data_atual
 
 
-# Retorna o ID DO USUÁRIO
 def retornar_id_usuario(email):
     conexao.commit()
 
@@ -45,15 +43,9 @@ def retornar_id_usuario(email):
 
 
 # Verifica se alguma STRING É VAZIA
-def verificar_string_vazia(*strings):
-  for string in strings:
-     if len(string) <=0:
-        return True
-  else:
-     return False
-  
 
-# Verifica se o PONTO É NEGATIVO
+
+
 def verificar_ponto_negativo(ponto):
   if ponto < 0:
     return True
@@ -61,7 +53,6 @@ def verificar_ponto_negativo(ponto):
     return False
   
 
-# Verifica a VALIDADE DO EMAIL
 def verificar_validade_email(email):
   if '@' in email and '.' in email:
     return True
@@ -69,7 +60,6 @@ def verificar_validade_email(email):
     return False
   
 
-# Verifica a VALIDADE DA AÇÃO
 def verificar_validade_acao(acao):
   lista = ['criou_conta', 'logou_conta', 'deslogou_conta', 'alterou_conta']
   if acao in lista:
@@ -78,7 +68,6 @@ def verificar_validade_acao(acao):
     return False
     
 
-# Verifica a VALIDADE DO CAMPO
 def verificar_validade_campo(campo):
    lista = ['nome','senha']
    if campo in lista:
@@ -87,15 +76,13 @@ def verificar_validade_campo(campo):
       return False
 
     
-# Registrar LOG
 def registrar_log(email,acao):
     conexao.commit()
 
-    string_vazia = verificar_string_vazia(acao)
     email_valido = verificar_validade_email(email)
     acao_valida = verificar_validade_acao(acao)
 
-    if (string_vazia == False) and (email_valido == True) and (acao_valida == True):
+    if (email_valido == True) and (acao_valida == True):
         email_cadastrado = verificar_uso_email(email)
 
         if email_cadastrado == True:

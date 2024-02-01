@@ -4,12 +4,10 @@ import smtplib
 import email.message
 
 
-# Enviar Código De Verificação Do Email:
 def verificar_email(nome_recebido,email_recebido,codigo_verificacao):
-    string_vazia = verificar_string_vazia(nome_recebido,email_recebido)
     email_valido = verificar_validade_email(email_recebido)
 
-    if (string_vazia == False) and (email_valido == True):
+    if email_valido:
 
         corpo_email = f"""
         <body style='font-family: Arial, Helvetica, sans-serif;'>
@@ -40,12 +38,11 @@ def verificar_email(nome_recebido,email_recebido,codigo_verificacao):
         return False
 
 
-# Criar Conta:
 def criar_conta(nome,email,senha):
     email_valido = verificar_validade_email(email)
     existe = verificar_uso_email(email)
 
-    if (email_valido == True) and (existe == False):
+    if (email_valido) and (existe == False):
             try:
                 comando = f"INSERT INTO jogadores (nome,email,senha) VALUES ('{nome}','{email}','{senha}')"
                 cursor.execute(comando)
@@ -61,12 +58,10 @@ def criar_conta(nome,email,senha):
         return False
  
 
-# Logar Conta:
 def logar_conta(email,senha):
     email_valido = verificar_validade_email(email)
-    string_vazia = verificar_string_vazia(senha)
 
-    if (email_valido == True) and string_vazia == False:
+    if email_valido:
 
         comando = f'SELECT * FROM jogadores WHERE email="{email}" AND senha="{senha}"'
         cursor.execute(comando)
@@ -78,16 +73,14 @@ def logar_conta(email,senha):
             return True
         
 
-# Alterar Conta:
 def alterar_conta(campo,novoDado,email):
     conexao.commit()
 
     email_valido = verificar_validade_email(email)
     campo_valido = verificar_validade_campo(campo)
-    string_vazia = verificar_string_vazia(novoDado)
     email_cadastrado = verificar_uso_email(email)
 
-    if (email_valido == True) and (campo_valido == True) and (string_vazia == False) and (email_cadastrado == True):
+    if (email_valido) and (campo_valido) and (email_cadastrado):
     
         try:
             comando = f'UPDATE jogadores SET {campo}="{novoDado}" WHERE email= "{email}"'
@@ -104,12 +97,11 @@ def alterar_conta(campo,novoDado,email):
         return False
 
 
-# Excluir Conta:
 def excluir_conta(email):
     email_valido = verificar_validade_email(email)
     email_cadastrado = verificar_uso_email(email)
 
-    if (email_valido == True) and (email_cadastrado == True):
+    if (email_valido) and (email_cadastrado):
         try:
             id = retornar_id_usuario(email)
 

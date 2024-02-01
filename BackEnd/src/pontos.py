@@ -1,6 +1,7 @@
 from .conexao import conexao, cursor
     
-def retornar_ponto(email: str, id_jogo: int) -> None|int:
+    
+def retornar_ponto(email: str, id_jogo: int) -> int:
 
     cursor.execute("SELECT pt.pontos FROM pontuacao as pt inner join jogadores as jg ON jg.id_jogador = pt.id_jogador WHERE jg.email = %s and pt.id_jogo = %s", (email, id_jogo))
     registro = cursor.fetchone()
@@ -11,7 +12,7 @@ def retornar_ponto(email: str, id_jogo: int) -> None|int:
         return 0
     
 
-def salvar_ponto(email: str, id_jogo: int, pontos: int) -> None:
+def salvar_ponto(email: str, id_jogo: int, pontos: int) -> bool:
 
     points = retornar_ponto(email, id_jogo)
 
