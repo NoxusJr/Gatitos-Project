@@ -8,7 +8,6 @@ def verificar_email(nome_recebido,email_recebido,codigo_verificacao):
     email_valido = verificar_validade_email(email_recebido)
 
     if email_valido:
-
         corpo_email = f"""
         <body style='font-family: Arial, Helvetica, sans-serif;'>
             <h4>Conta Gatitos</h4>
@@ -43,7 +42,6 @@ def criar_conta(nome,email,senha):
     existe = verificar_uso_email(email)
 
     if (email_valido) and (existe == False):
-            try:
                 comando = f"INSERT INTO jogadores (nome,email,senha) VALUES ('{nome}','{email}','{senha}')"
                 cursor.execute(comando)
                 conexao.commit()
@@ -52,8 +50,6 @@ def criar_conta(nome,email,senha):
                 res = registrar_log(email,acao)
 
                 return True
-            except:
-                return False
     else:
         return False
  
@@ -82,7 +78,6 @@ def alterar_conta(campo,novoDado,email):
 
     if (email_valido) and (campo_valido) and (email_cadastrado):
     
-        try:
             comando = f'UPDATE jogadores SET {campo}="{novoDado}" WHERE email= "{email}"'
             cursor.execute(comando)
             conexao.commit()
@@ -91,8 +86,6 @@ def alterar_conta(campo,novoDado,email):
             registrar_log(email,acao)
 
             return True
-        except:
-            return False
     else:
         return False
 
@@ -102,7 +95,6 @@ def excluir_conta(email):
     email_cadastrado = verificar_uso_email(email)
 
     if (email_valido) and (email_cadastrado):
-        try:
             id = retornar_id_usuario(email)
 
             comando = f'DELETE FROM jogadores WHERE email= "{email}"'
@@ -114,7 +106,5 @@ def excluir_conta(email):
             conexao.commit()
 
             return True
-        except:
-            return False
     else:
         return False

@@ -97,3 +97,5 @@ def retornarRanking():
     id_jogo = dados['id_jogo']
     
     return jsonify(retornar_ranking(id_jogo))
+
+app.run(host="localhost",port=5000)
