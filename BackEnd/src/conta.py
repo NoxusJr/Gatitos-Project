@@ -4,38 +4,6 @@ import smtplib
 import email.message
 
 
-def verificar_email(nome_recebido,email_recebido,codigo_verificacao):
-    email_valido = verificar_validade_email(email_recebido)
-
-    if email_valido:
-        corpo_email = f"""
-        <body style='font-family: Arial, Helvetica, sans-serif;'>
-            <h4>Conta Gatitos</h4>
-            <h1 style='color: rgb(68, 24, 224);'>Código de verificação</h1>
-            <h3>Olá {nome_recebido}!</h3>
-            <p>Seu código é: <span style='font-weight: bolder;color: rgb(68, 24, 224)'>{codigo_verificacao}</span></p>
-        </body>       
-        """
-
-        msg = email.message.Message()
-        msg['Subject'] = "Verifique Sua Conta"
-        msg['From'] = email_sac
-        msg['To'] = f'{email_recebido}'
-        password = senha_email_sac
-
-        msg.add_header('Content-Type','text/html')
-        msg.set_payload(corpo_email)
-
-        s = smtplib.SMTP('smtp.gmail.com:587')
-        s.starttls()
-
-        s.login(msg['From'],password)
-        s.sendmail(msg['From'],[msg['To']], msg.as_string().encode('utf-8'))
-        
-        return True
-    else:
-        return False
-
 
 def criar_conta(nome,email,senha):
     email_valido = verificar_validade_email(email)

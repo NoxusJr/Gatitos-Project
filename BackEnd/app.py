@@ -59,17 +59,6 @@ def excluirConta(email):
 
 
 @cross_origin
-@app.route('/conta/verificarEmail', methods=['POST'])
-def verificarEmail():
-    dados = request.get_json()
-    nome = dados['nome']
-    email = dados['email']
-    codigo = dados['codigo']
-
-    return jsonify(verificar_email(nome,email,codigo))
-
-
-@cross_origin
 @app.route('/pontos/salvarPonto/', methods=['POST'])
 def salvarPonto():
     dados = request.get_json()
