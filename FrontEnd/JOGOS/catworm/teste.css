@@ -1,0 +1,24 @@
+body {
+    text-align: center;
+    background-color: rgb(171, 60, 199);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#board {
+    border: 2px solid white;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.geeks {
+    font-size: 40px;
+    font-weight: bold;
+    color: rgb(169, 241, 0);
+}

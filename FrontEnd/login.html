@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=divice-width, initial-scale=2"/>
+    <link rel="stylesheet" href="./CSS/main2.css" />
+</head>
+<body>
+<div class="box">
+    <img class="logo" src="IMG/Logo Gatitos Login.png" alt="Logo">
+
+    <div class="inputWithIcon">
+        <input type="text" id="nick" name="usuário" placeholder="Email">
+        <i class="fa-regular fa-user fa-sm" style="color: #ffb600;"></i>
+    </div>
+    
+    <div class="password-container">
+            <div class="inputWithIcon">
+            <i class="fa-solid fa-lock fa-sm" style="color: #ffb600;"></i>
+            <input type="password" id="password" name="password" placeholder="Senha">
+            </div>
+        </div>
+
+
+
+    <p>Crie sua conta clicando <a href="cadastro.html">aqui</a></p>
+    <button class="botao" onclick="loginAccount()">Logar</button>
+    <button class="botao" onclick="anonimo()">Anônimo</button>
+    
+</div>
+
+<script>
+function anonimo() {
+  window.location.href = 'layout.html';
+}
+
+</script>
+
+<script src="SCRIPTS/account.js"></script>
+<script src="https://kit.fontawesome.com/2250e2e58f.js" crossorigin="anonymous"></script>
+</body>
+</html>
